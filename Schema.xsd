@@ -1,0 +1,176 @@
+<?xml version 1.0 encoding="UTF-8"?>
+<!--Odkaz na github: https://github.com/bouzeko/e-shop/-->
+
+<xs:schema attributeFormDefault="unqualified" elementFormDefault="qualified" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:element name="e-shop">
+    <xs:annotation>
+      <xs:documentation>E-shop s hudebními nástrojiNastavení zobrazení</xs:documentation>
+    </xs:annotation>
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element name="nastaveni-zobrazeni">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element type="xs:integer" name="max-pocet-zaznamu"/>
+              <xs:element type="jazyk-set" name="jazyk" default="CZ"/>
+              <xs:element type="mena-set" name="mena"/>
+              <xs:element type="charset-set" name="charset" default="utf-8"/>
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="nastaveni-pristupu">
+          <xs:annotation>
+            <xs:documentation>Nastavení přístupu</xs:documentation>
+          </xs:annotation>
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="role" maxOccurs="unbounded" minOccurs="0">
+                <xs:complexType>
+                  <xs:sequence>
+                    <xs:element type="ano-ne" name="uprava-ceny"/>
+                    <xs:element type="ano-ne" name="uprava-stavu"/>
+                    <xs:element type="ano-ne" name="uprava-udaju"/>
+                  </xs:sequence>
+                  <xs:attribute type="role-set" name="nazev" use="optional"/>
+                </xs:complexType>
+              </xs:element>
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="pristup-podle-stavu">
+          <xs:annotation>
+            <xs:documentation>Nastavení přístupu různými rolemi podle stavu zboží</xs:documentation>
+          </xs:annotation>
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="stav" maxOccurs="unbounded" minOccurs="0">
+                <xs:complexType>
+                  <xs:sequence>
+                    <xs:element type="ano-ne" name="admin"/>
+                    <xs:element type="ano-ne" name="vedouci"/>
+                    <xs:element type="ano-ne" name="zamestnanec"/>
+                    <xs:element type="ano-ne" name="zakaznik"/>
+                  </xs:sequence>
+                  <xs:attribute type="stav-zbozi" name="jmeno" use="optional"/>
+                </xs:complexType>
+              </xs:element>
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="databaze-nastroju">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="kategorie" maxOccurs="unbounded" minOccurs="0">
+                <xs:annotation>
+                  <xs:documentation>Kategorie 1 - ElektrickéKategorie 2 - AkustickéKategorie 3 - BaskytaryKategorie 4 - Ukulele</xs:documentation>
+                </xs:annotation>
+                <xs:complexType>
+                  <xs:sequence>
+                    <xs:element type="nazev-kategorie" name="nazev-kat"/>
+                    <xs:element name="nastroj" maxOccurs="unbounded" minOccurs="0">
+                      <xs:complexType>
+                        <xs:sequence>
+                          <xs:element type="xs:string" name="znacka"/>
+                          <xs:element type="xs:string" name="druh"/>
+                          <xs:element type="xs:string" name="barva"/>
+                          <xs:element type="kod" name="kod-zbozi"/>
+                          <xs:element type="xs:short" name="rok-vyroby"/>
+                          <xs:element type="xs:short" name="cena"/>
+                          <xs:element type="stav-zbozi" name="stav" minOccurs="0"/>
+                        </xs:sequence>
+                        <xs:attribute type="id-nastroje" name="id" use="optional"/>
+                      </xs:complexType>
+                    </xs:element>
+                  </xs:sequence>
+                  <xs:attribute type="xs:byte" name="cislo" use="optional"/>
+                </xs:complexType>
+              </xs:element>
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>        
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  
+  <!--Nastavení jazyka-->
+  <xs:simpleType name="jazyk-set">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="CZ"/>
+      <xs:enumeration value="EN"/>
+      <xs:enumeration value="DE"/>
+      <xs:enumeration value="FR"/>
+    </xs:restriction>
+  </xs:simpleType>
+  
+  <!--Nastavení měny-->
+  <xs:simpleType name="mena-set">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="CZK"/>
+      <xs:enumeration value="EUR"/>
+      <xs:enumeration value="USD"/>
+    </xs:restriction>
+  </xs:simpleType>
+  
+  <!--Nastavení charsetu-->
+  <xs:simpleType name="charset-set">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="utf-8"/>
+      <xs:enumeration value="windows-1258"/>
+      <xs:enumeration value="utf-7"/>
+      <xs:enumeration value="iso-8859"/>
+    </xs:restriction>
+  </xs:simpleType>
+  
+  <!--Nastavení role-->
+  <xs:simpleType name="role-set">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="admin"/>
+      <xs:enumeration value="vedouci"/>
+      <xs:enumeration value="zamestnanec"/>
+      <xs:enumeration value="zakaznik"/>
+    </xs:restriction>
+  </xs:simpleType>
+  
+  <!--Nastavení ano-ne-->
+  <xs:simpleType name="ano-ne">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="ano"/>
+      <xs:enumeration value="ne"/>
+    </xs:restriction>
+  </xs:simpleType>
+  
+  <!--Názvy kategorie-->
+  <xs:simpleType name="nazev-kategorie">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="elektrické"/>
+      <xs:enumeration value="akustické"/>
+      <xs:enumeration value="baskytary"/>
+      <xs:enumeration value="ukulele"/>
+    </xs:restriction>
+  </xs:simpleType>
+  
+   <!--Kód zboží-->
+  <xs:simpleType name="kod">
+    <xs:restriction base="xs:string">
+      <xs:pattern value="[A-Z][A-Z][A-Z][0-9][0-9][0-9][0-9]"/>
+    </xs:restriction>
+  </xs:simpleType>
+  
+  <!--Stav zboží-->
+  <xs:simpleType name="stav-zbozi">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="skladem"/>
+      <xs:enumeration value="na-prodejne"/>
+      <xs:enumeration value="objednane"/>
+      <xs:enumeration value="nedostupne"/>
+    </xs:restriction>
+  </xs:simpleType>
+  
+  <!--ID nástroje-->
+  <xs:simpleType name="id-nastroje">
+    <xs:restriction base="xs:string">
+      <xs:pattern value="([A-Z][0-9])+"/>
+    </xs:restriction>
+  </xs:simpleType>
+</xs:schema>
+

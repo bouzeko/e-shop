@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<!--Odkaz na github: https://github.com/bouzeko/e-shop/-->
+<html lang='cs'>
+  <head>
+    <title>E-shop s kytarami</title>
+    <meta charset='utf-8'>
+    <meta name='description' content=''>
+    <meta name='keywords' content=''>
+    <meta name='author' content=''>
+    <meta name='robots' content='all'>
+    <!-- <meta http-equiv='X-UA-Compatible' content='IE=edge'> -->
+    <link href='/favicon.png' rel='shortcut icon' type='image/png'>
+  </head>
+  <body>
+    <section id="obsah">
+      <article>
+        <header>
+          <h1>Obsah</h1>
+        </header>
+          <nav>
+            <ul>
+              <li><a href="#uvod">Úvod</a></li>
+              <li><a href="#metodika">Metodika</a></li>
+              <li><a href="#popis">Popis elementů a atributů</a></li>
+              <li><a href="#transformace">Popis transformace</a></li>
+              <li><a href="#zaver">Závěr</a></li>
+            </ul>
+          </nav>
+      </article>
+    </section>
+    <main>
+      <section id="uvod">
+        <article>
+          <header>
+            <h2>Úvod</h2>
+          </header>
+            <p>Tato práce se zabývá konfigurace fiktivní webové aplikace na téma E-shop
+            s kytarami. Xml dokument obsahuje data potřebná pro nastavení aplikace.
+            Jsou zde data pro zobrazení stránky, jako je jazyk nebo kódování, rozdělení
+            rolí a jejich přístupu k různým položkám v e-shopu a v závěru databáze
+            hudebních nástrojů a jejich přístupnost na základě rolí uživatelů používajících
+            aplikaci.      
+            </p>
+        </article>
+      </section>
+      <section id="metodika">
+        <article>
+          <header>
+            <h2>Metodika</h2>
+          </header>
+            <h3>Použité nástroje</h3>
+            <p>K této semestrální práci byly použity programy <a href="http://www.pspad.com/cz/">PSPad editor</a>
+            a <a href="https://www.sublimetext.com/">Sublime Text</a>. Ke kontrole vizuální
+            podoby html dokumentu byl použit prohlížeč <a href="https://www.mozilla.org/cs/firefox/new/">
+            Mozilla Firefox</a>.
+            </p>
+            <p>Z webových stránek pro kontrolu validace dokumentů byly použity stránky
+            <a href="http://www.freeformatter.com/">freeformater.com</a> a <a href="http://www.xmlvalidation.com/">
+            xmlvalidation.com</a>.
+            </p>
+        </article>
+      </section>
+      <section id="popis">
+      <article>
+        <header>
+          <h2>Použité elementy a atributy</h2>
+        </header>
+          <h3>Popis elementů</h3>
+          <table border="1">
+            <tr>
+              <td><strong>Název elementu</strong></td>
+              <td><strong>Popis elementu</strong></td>
+              <td><strong>Schématické omezení</strong></td>
+            </tr>
+            <tr>
+              <td>nastaveni-zobrazeni</td>
+              <td>Svými potomky popisuje nastavení zobrazení</td>
+              <td>žádná</td>
+            </tr>
+            <tr>
+              <td>max-pocet-zaznamu</td>
+              <td>Udává maximální počet záznamů na stránku</td>
+              <td>xs:integer</td>
+            </tr>
+            <tr>
+              <td>jazyk</td>
+              <td>Nastavuje jazyk zobrazení aplikace (základní je CZ)</td>
+              <td>CZ, EN, FR, DE</td>
+            </tr>
+            <tr>
+              <td>nastaveni-pristupu</td>
+              <td>potomci elementu udávají oprávnění různých rolí v aplikaci</td>
+              <td>bez omezení</td>
+            </tr>
+            <tr>
+              <td>role</td>
+              <td>svým atributem popisuje název role</td>
+              <td>bez omezení (omezení má atribut)</td>
+            </tr>
+            <tr>
+              <td>uprava-ceny</td>
+              <td>Udává, zda je možné upravovat cenu</td>
+              <td>ano, ne</td>
+            </tr>
+            <tr>
+              <td>uprava-stavu</td>
+              <td>Udává, zda je možné upravovat stav zboží</td>
+              <td>ano, ne</td>
+            </tr>
+            <tr>
+              <td>uprava-udaju</td>
+              <td>Udává, zda je možné upravovat údaje o nástroji</td>
+              <td>ano, ne</td>
+            </tr>
+            <tr>
+              <td>pristup-podle-stavu</td>
+              <td>Jeho potomci udávají, která role má jaké přístupy ke zboží různých stavů</td>
+              <td>bez omezení</td>
+            </tr>
+            <tr>
+              <td>stav</td>
+              <td>Atribut elementu popisuje názvy rolí</td>
+              <td>bez omezení (omezení má atribut)</td>
+            </tr>
+            <tr>
+              <td>admin</td>
+              <td>Udává, jestli má admin přístup k různému zboží podle jeho stavu</td>
+              <td>ano, ne</td>
+            </tr>
+            <tr>
+              <td>vedouci</td>
+              <td>Udává, jestli má vedoucí přístup k různému zboží podle jeho stavu</td>
+              <td>ano, ne</td>
+            </tr>
+            <tr>
+              <td>zamestnanec</td>
+              <td>Udává, jestli má zaměstnanec přístup k různému zboží podle jeho stavu</td>
+              <td>ano, ne</td>
+            </tr>
+            <tr>
+              <td>zakaznik</td>
+              <td>Udává, jestli má zákazník přístup k různému zboží podle jeho stavu</td>
+              <td>ano, ne</td>
+            </tr>
+            <tr>
+              <td>databaze-nastroju</td>
+              <td>Zastřešuje elementy, které popisují hudební nástroj</td>
+              <td>bez omezení</td>
+            </tr>
+            <tr>
+              <td>kategorie</td>
+              <td>Atribut elementu popisuje číslo kategorie</td>
+              <td>bez omezení (omezení má atribut)</td>
+            </tr>
+            <tr>
+              <td>nazev-kat</td>
+              <td>Popisuje název kategorie</td>
+              <td>xs:string</td>
+            </tr>
+            <tr>
+              <td>nastroj</td>
+              <td>Atribut elementu popisuje id nástroje</td>
+              <td>bez omezení (omezení má atribut)</td>
+            </tr>
+            <tr>
+              <td>znacka</td>
+              <td>Zobrazuje značku kytary</td>
+              <td>xs:string</td>
+            </tr>
+            <tr>
+              <td>druh</td>
+              <td>Zobrazuje druh kytary</td>
+              <td>xs:string</td>
+            </tr>
+            <tr>
+              <td>barva</td>
+              <td>Zobrazuje barvu nástroje</td>
+              <td>xs:string</td> 
+            </tr>
+            <tr>
+              <td>kod-zbozi</td>
+              <td>Zobrazuje kód konkrétního zboží</td>
+              <td>xs:string, maska [A-Z][A-Z][A-Z][0-9][0-9][0-9][0-9]</td>
+            </tr>
+            <tr>
+              <td>rok-vyroby</td>
+              <td>Zobrazuje rok výroby konkrétního nástroje</td>
+              <td>xs:integer</td>
+            </tr>
+            <tr>
+              <td>cena</td>
+              <td>Zobrazuje cenu výrobku v CZK</td>
+              <td>xs:integer</td>
+            </tr>
+            <tr>
+              <td>stav</td>
+              <td>Zobrazuje stav zboží</td>
+              <td>na-prodejne, skladem, objednane, nedostupne</td>
+            </tr>
+          </table>
+          <h3>Popis atributů</h3>
+          <table border="1">
+            <tr>
+              <td><strong>Název atributu</strong></td>
+              <td><strong>Popis atributu</strong></td>
+              <td><strong>Omezení</strong></td>
+            </tr>
+            <tr>
+              <td>nazev</td>
+              <td>Zobrazuje název role</td>
+              <td>admin, vedouci, zamestnanec, zakaznik</td>
+            </tr>
+            <tr>
+              <td>jmeno</td>
+              <td>Zobrazuje jméno stavu zboží</td>
+              <td>na-prodejne, skladem, objednane, nedostupne</td>
+            </tr>
+            <tr>
+              <td>cislo</td>
+              <td>Zobrazuje číslo kategorie</td>
+              <td>xs:integer</td>
+            </tr>
+            <tr>
+              <td>id</td>
+              <td>Udává id nástroje</td>
+              <td>xs:string, maska [A-Z][0-9]+</td>
+            </tr>
+          </table>
+        </article>
+      </section>
+      <section id="transformace">
+        <article>
+          <header>
+            <h2>Popis transformace</h2>
+          </header>
+          <p>Transformace do JSON pomocí cyklu xsl:for-each zobrazuje kytary, které
+          jsou v současnosti nedostupné, a tudíž k nim má přístup pouze admin
+          a vedoucí prodejny. 
+          </p>
+        </article>
+      </section>
+      <section id="zaver">
+       <article>
+        <header>
+          <h2>Závěr</h2>
+        </header>
+          <p>Tento projekt byl věnován především značkovacím jazykům html a xml.
+          Tyto jazyky mají využití hlavně ve webových stránkách, jelikož jsou jednoduše
+          čitelné jako prohlížečem, tak i člověkem, a proto lze rychle a jednoduše upravit.
+          Xml lze využít pro konfiguraci aplikací, případně pro databáze, ze které může
+          webová stránka čerpat. Kód v html nebo xml ale nebývá bezpečný, a proto
+          by se v něm neměla vyskytovat citlivá data.
+          </p>
+        </article>
+      </section>
+    </main>
+    <footer>
+    &nbsp;Autor: Ondřej Bouzek (xbouo001) | Česká zemědělská univerzita v Praze,
+    vytvořeno pro předmět Značkovací jazyky
+    </footer>
+  </body>
+</html>                                   

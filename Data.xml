@@ -1,0 +1,210 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--E-shop s hudebními nástroji-->
+<!--Odkaz na github: https://github.com/bouzeko/e-shop/-->
+<!--Nastavení zobrazení-->
+<e-shop xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+              xsi:noNamespaceSchemaLocation="Schema.xsd">
+<nastaveni-zobrazeni>
+  <max-pocet-zaznamu>20</max-pocet-zaznamu>
+  <jazyk>CZ</jazyk>
+  <mena>CZK</mena>
+  <charset>utf-8</charset>
+</nastaveni-zobrazeni>
+
+<!--Nastavení přístupu-->
+<nastaveni-pristupu>
+  <role nazev="admin">
+    <uprava-ceny>ano</uprava-ceny>
+    <uprava-stavu>ano</uprava-stavu>
+    <uprava-udaju>ano</uprava-udaju>
+  </role>
+  <role nazev="vedouci">
+    <uprava-ceny>ne</uprava-ceny>
+    <uprava-stavu>ano</uprava-stavu>
+    <uprava-udaju>ano</uprava-udaju>
+  </role>
+  <role nazev="zamestnanec">
+    <uprava-ceny>ne</uprava-ceny>
+    <uprava-stavu>ano</uprava-stavu>
+    <uprava-udaju>ne</uprava-udaju>
+  </role>
+  <role nazev="zakaznik">
+    <uprava-ceny>ne</uprava-ceny>
+    <uprava-stavu>ne</uprava-stavu>
+    <uprava-udaju>ne</uprava-udaju>
+  </role>
+</nastaveni-pristupu>
+
+<!--Nastavení přístupu různými rolemi podle stavu zboží-->
+<pristup-podle-stavu>
+  <stav jmeno="skladem">
+    <admin>ano</admin>
+    <vedouci>ano</vedouci>
+    <zamestnanec>ano</zamestnanec>
+    <zakaznik>ano</zakaznik>
+  </stav>
+  <stav jmeno="na-prodejne">
+    <admin>ano</admin>
+    <vedouci>ano</vedouci>
+    <zamestnanec>ano</zamestnanec>
+    <zakaznik>ano</zakaznik>
+  </stav>
+  <stav jmeno="objednane">
+    <admin>ano</admin>
+    <vedouci>ano</vedouci>
+    <zamestnanec>ano</zamestnanec>
+    <zakaznik>ne</zakaznik>
+  </stav>
+  <stav jmeno="nedostupne">
+    <admin>ano</admin>
+    <vedouci>ano</vedouci>
+    <zamestnanec>ne</zamestnanec>
+    <zakaznik>ne</zakaznik>
+  </stav>
+</pristup-podle-stavu>
+
+<databaze-nastroju>
+<!--Kategorie 1 - Elektrické-->
+  <kategorie cislo="1">
+    <nazev-kat>elektrické</nazev-kat>
+      <nastroj id="E1">
+        <znacka>Fender</znacka>
+        <druh>Stratocaster</druh>
+        <barva>bílá</barva>
+        <kod-zbozi>NHF2932</kod-zbozi>
+        <rok-vyroby>2003</rok-vyroby>
+        <cena>13290</cena>
+        <stav>skladem</stav>
+      </nastroj>    
+      <nastroj id="E2">
+        <znacka>Gibson</znacka>
+        <druh>Les Paul</druh>
+        <barva>černá</barva>
+        <kod-zbozi>KLP1273</kod-zbozi>
+        <rok-vyroby>2012</rok-vyroby>
+        <cena>16900</cena>
+        <stav>skladem</stav>
+      </nastroj>
+      <nastroj id="E3">
+        <znacka>Epiphone</znacka>
+        <druh>Archtop</druh>
+        <barva>žlutá</barva>
+        <kod-zbozi>EAT0235</kod-zbozi>
+        <rok-vyroby>2011</rok-vyroby>
+        <cena>9900</cena>
+        <stav>na-prodejne</stav>
+      </nastroj>
+      <nastroj id="E4">
+        <znacka>Gibson</znacka>
+        <druh>SG</druh>
+        <barva>přírodní</barva>
+        <kod-zbozi>ACG1204</kod-zbozi>
+        <rok-vyroby>2015</rok-vyroby>
+        <cena>15150</cena>
+        <stav>nedostupne</stav>
+      </nastroj>
+  </kategorie>
+
+<!--Kategorie 2 - Akustické-->
+  <kategorie cislo="2">
+    <nazev-kat>akustické</nazev-kat>
+      <nastroj id="A1">
+        <znacka>Cort</znacka>
+        <druh>Dreadnought</druh>
+        <barva>prirodni</barva>
+        <kod-zbozi>ZKC7658</kod-zbozi>
+        <rok-vyroby>2010</rok-vyroby>
+        <cena>5600</cena>
+        <stav>objednane</stav>
+      </nastroj>
+      <nastroj id="A2">
+        <znacka>Ibanez</znacka>
+        <druh>Jumbo</druh>
+        <barva>červená</barva>
+        <kod-zbozi>IJC4581</kod-zbozi>
+        <rok-vyroby>2017</rok-vyroby>
+        <cena>8900</cena>
+        <stav>objednane</stav>
+      </nastroj>
+      <nastroj id="A3">
+        <znacka>Gibson</znacka>
+        <druh>Dreadnought</druh>
+        <barva>černá</barva>
+        <kod-zbozi>GDC3641</kod-zbozi>
+        <rok-vyroby>2009</rok-vyroby>
+        <cena>10120</cena>
+        <stav>skladem</stav>
+      </nastroj>
+      <nastroj id="A4">
+        <znacka>Stagg</znacka>
+        <druh>španělská</druh>
+        <barva>modrá</barva>
+        <kod-zbozi>SSM0708</kod-zbozi>
+        <rok-vyroby>2005</rok-vyroby>
+        <cena>2800</cena>
+        <stav>na-prodejne</stav>
+      </nastroj>
+   </kategorie>
+<!--Kategorie 3 - Baskytary-->
+  <kategorie cislo="3">
+    <nazev-kat>baskytary</nazev-kat>
+      <nastroj id="B1">
+        <znacka>Squier</znacka>
+        <druh>Jazz Bass</druh>
+        <barva>oranžová</barva>
+        <kod-zbozi>SJB2143</kod-zbozi>
+        <rok-vyroby>2016</rok-vyroby>
+        <cena>4300</cena>
+        <stav>nedostupne</stav>
+      </nastroj>
+      <nastroj id="B2">
+        <znacka>Fender</znacka>
+        <druh>Precison Bass</druh>
+        <barva>přírodní</barva>
+        <kod-zbozi>FPB7410</kod-zbozi>
+        <rok-vyroby>2016</rok-vyroby>
+        <cena>9600</cena>
+        <stav>na-prodejne</stav>
+      </nastroj>
+      <nastroj id="B3">
+        <znacka>Vintage</znacka>
+        <druh>Modern Bass</druh>
+        <barva>hnědá</barva>
+        <kod-zbozi>VMB2739</kod-zbozi>
+        <rok-vyroby>2011</rok-vyroby>
+        <cena>7800</cena>
+      </nastroj>
+      <nastroj id="B4">
+        <znacka>Gretsch</znacka>
+        <druh>GH</druh>
+        <barva>černá</barva>
+        <kod-zbozi>GGH2491</kod-zbozi>
+        <rok-vyroby>2017</rok-vyroby>
+        <cena>6300</cena>
+        <stav>skladem</stav>
+      </nastroj>
+  </kategorie>
+<!--Kategorie 4 - Ukulele-->
+  <kategorie cislo="4">
+    <nazev-kat>ukulele</nazev-kat>
+      <nastroj id="U1">
+        <znacka>Washburn</znacka>
+        <druh>sopránová</druh>
+        <barva>žlutá</barva>
+        <kod-zbozi>UWS3267</kod-zbozi>
+        <rok-vyroby>2012</rok-vyroby>
+        <cena>2200</cena>
+        <stav>objednane</stav>
+      </nastroj>
+      <nastroj id="U2">
+        <znacka>Woodi</znacka>
+        <druh>koncertní</druh>
+        <barva>červená</barva>
+        <kod-zbozi>WKC3485</kod-zbozi>
+        <rok-vyroby>2013</rok-vyroby>
+        <cena>1800</cena>
+        <stav>skladem</stav>
+      </nastroj>
+  </kategorie>
+</databaze-nastroju>
+</e-shop>                                    
